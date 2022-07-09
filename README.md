@@ -1,2 +1,2 @@
 # CursoRails
-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
+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
