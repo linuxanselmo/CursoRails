@@ -1,0 +1,621 @@
+  [1m[35m (195.7ms)[0m  [1m[35mCREATE DATABASE `crypto_wallet_development` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (195.6ms)[0m  [1m[35mCREATE DATABASE `crypto_wallet_test` DEFAULT CHARACTER SET `utf8mb4`[0m
+  [1m[35m (1592.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (807.6ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT GET_LOCK('4188092860430818185', 0)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (12.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateCoins (20220710021411)
+  [1m[35m (696.5ms)[0m  [1m[35mCREATE TABLE `coins` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `description` varchar(255), `acronym` varchar(255), `url_image` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20220710021411')[0m
+  [1m[36mTRANSACTION (146.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2022-07-10 03:28:04.886821', '2022-07-10 03:28:04.886821')[0m
+  [1m[36mTRANSACTION (128.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('4188092860430818185')[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for ::1 at 2022-07-10 00:32:04 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 15.6ms | Allocations: 645)
+Completed 200 OK in 96ms (Views: 38.6ms | ActiveRecord: 0.0ms | Allocations: 5034)
+
+
+Started GET "/coins" for ::1 at 2022-07-10 00:37:13 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1611)
+  Rendered layout layouts/application.html.erb (Duration: 638.2ms | Allocations: 92490)
+Completed 200 OK in 658ms (Views: 645.3ms | ActiveRecord: 0.6ms | Allocations: 96597)
+
+
+Started GET "/coins/new" for ::1 at 2022-07-10 00:37:21 -0300
+Processing by CoinsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/new.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 77.4ms | Allocations: 5032)
+  Rendered coins/new.html.erb within layouts/application (Duration: 79.4ms | Allocations: 5412)
+  Rendered layout layouts/application.html.erb (Duration: 91.3ms | Allocations: 7751)
+Completed 200 OK in 118ms (Views: 93.4ms | ActiveRecord: 7.6ms | Allocations: 12235)
+
+
+Started POST "/coins" for ::1 at 2022-07-10 00:37:40 -0300
+Processing by CoinsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coin"=>{"description"=>"BITCOIN", "acronym"=>"", "url_image"=>""}, "commit"=>"Create Coin"}
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mCoin Create (1.2ms)[0m  [1m[32mINSERT INTO `coins` (`description`, `acronym`, `url_image`, `created_at`, `updated_at`) VALUES ('BITCOIN', '', '', '2022-07-10 03:37:40.562961', '2022-07-10 03:37:40.562961')[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (107.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/coins/1
+Completed 302 Found in 171ms (ActiveRecord: 111.6ms | Allocations: 3829)
+
+
+Started GET "/coins/1" for ::1 at 2022-07-10 00:37:40 -0300
+Processing by CoinsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 1.7ms | Allocations: 262)
+  Rendered coins/show.html.erb within layouts/application (Duration: 31.7ms | Allocations: 1646)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 3961)
+Completed 200 OK in 100ms (Views: 44.4ms | ActiveRecord: 0.7ms | Allocations: 6783)
+
+
+Started GET "/coins" for ::1 at 2022-07-10 00:37:47 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1063)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 3282)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.6ms | Allocations: 3609)
+
+
+Started GET "/coins/1" for ::1 at 2022-07-10 00:37:50 -0300
+Processing by CoinsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered coins/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 572)
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 2780)
+Completed 200 OK in 23ms (Views: 17.8ms | ActiveRecord: 0.6ms | Allocations: 3586)
+
+
+Started GET "/" for 127.0.0.1 at 2022-07-10 10:01:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (34.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 49.4ms | Allocations: 537)
+Completed 200 OK in 162ms (Views: 88.3ms | ActiveRecord: 0.0ms | Allocations: 3696)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-10 10:01:23 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (2.2ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 31.1ms | Allocations: 282)
+  Rendered coins/index.html.erb within layouts/application (Duration: 141.0ms | Allocations: 6258)
+  Rendered layout layouts/application.html.erb (Duration: 750.7ms | Allocations: 41167)
+Completed 200 OK in 777ms (Views: 742.8ms | ActiveRecord: 12.6ms | Allocations: 42979)
+
+
+Started GET "/asdf" for 127.0.0.1 at 2022-07-10 11:48:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/asdf"):
+  
+Started GET "/coins/1" for ::1 at 2022-07-10 12:46:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CoinsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.8ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 2.5ms | Allocations: 291)
+  Rendered coins/show.html.erb within layouts/application (Duration: 79.7ms | Allocations: 2089)
+  Rendered layout layouts/application.html.erb (Duration: 522.1ms | Allocations: 36367)
+Completed 200 OK in 618ms (Views: 530.3ms | ActiveRecord: 8.0ms | Allocations: 46887)
+
+
+Started GET "/welcome" for ::1 at 2022-07-10 12:46:39 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/welcome"):
+  
+Started GET "/welcomes" for ::1 at 2022-07-10 12:47:06 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/welcomes"):
+  
+Started GET "/welcomes/index" for ::1 at 2022-07-10 12:48:39 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/welcomes/index"):
+  
+Started GET "/conis" for ::1 at 2022-07-10 12:48:52 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/conis"):
+  
+Started GET "/coins" for ::1 at 2022-07-10 12:48:58 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 32)
+  Rendered coins/index.html.erb within layouts/application (Duration: 56.0ms | Allocations: 1322)
+  Rendered layout layouts/application.html.erb (Duration: 67.2ms | Allocations: 3661)
+Completed 200 OK in 70ms (Views: 68.0ms | ActiveRecord: 0.6ms | Allocations: 4063)
+
+
+Started GET "/coins" for ::1 at 2022-07-10 15:39:15 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1137)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 3352)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 1.2ms | Allocations: 3637)
+
+
+Started GET "/welcome" for ::1 at 2022-07-10 16:42:55 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/welcome"):
+  
+Started GET "/welcome/index" for ::1 at 2022-07-10 16:43:03 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 149)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 3011)
+Completed 200 OK in 19ms (Views: 16.8ms | Allocations: 3974)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2022-07-10 16:51:06 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 188)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 3083)
+Completed 200 OK in 21ms (Views: 19.0ms | Allocations: 3922)
+
+
+Started GET "/welcome/index" for ::1 at 2022-07-10 16:52:39 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 190)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 3036)
+Completed 200 OK in 24ms (Views: 21.4ms | Allocations: 3875)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2022-07-11 00:11:50 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (121.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 498)
+  Rendered layout layouts/application.html.erb (Duration: 406.4ms | Allocations: 35181)
+Completed 200 OK in 443ms (Views: 412.8ms | ActiveRecord: 0.0ms | Allocations: 38510)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:11:58 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (40.0ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 1.3ms | Allocations: 282)
+  Rendered coins/index.html.erb within layouts/application (Duration: 265.6ms | Allocations: 6223)
+  Rendered layout layouts/application.html.erb (Duration: 272.5ms | Allocations: 8654)
+Completed 200 OK in 306ms (Views: 163.3ms | ActiveRecord: 112.2ms | Allocations: 10244)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:12:05 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.8ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1094)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 3311)
+Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.8ms | Allocations: 3639)
+
+
+Started GET "/info/routes" for 127.0.0.1 at 2022-07-11 00:16:14 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/info/routes"):
+  
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:17:13 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 1.3ms | Allocations: 212)
+  Rendered coins/index.html.erb within layouts/application (Duration: 23.8ms | Allocations: 1723)
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 4344)
+Completed 200 OK in 46ms (Views: 43.2ms | ActiveRecord: 0.7ms | Allocations: 5232)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2022-07-11 00:17:19 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 297)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 2950)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms | Allocations: 3609)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2022-07-11 00:17:23 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 60)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 2475)
+Completed 200 OK in 20ms (Views: 18.0ms | ActiveRecord: 0.0ms | Allocations: 2761)
+
+
+Started GET "/welcome/index" for 127.0.0.1 at 2022-07-11 00:17:30 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 60)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 2465)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms | Allocations: 2731)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:17:33 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 32)
+  Rendered coins/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1062)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 3283)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 0.6ms | Allocations: 3570)
+
+
+Started GET "/coins/1" for 127.0.0.1 at 2022-07-11 00:33:33 -0300
+Processing by CoinsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (20.4ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered coins/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 981)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 3294)
+Completed 200 OK in 123ms (Views: 14.5ms | ActiveRecord: 21.2ms | Allocations: 12312)
+
+
+Started GET "/coins/1/edit" for 127.0.0.1 at 2022-07-11 00:33:35 -0300
+Processing by CoinsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.8ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/edit.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 103.6ms | Allocations: 3262)
+  Rendered coins/edit.html.erb within layouts/application (Duration: 106.2ms | Allocations: 3651)
+  Rendered layout layouts/application.html.erb (Duration: 114.4ms | Allocations: 5967)
+Completed 200 OK in 121ms (Views: 115.8ms | ActiveRecord: 0.8ms | Allocations: 6843)
+
+
+Started PATCH "/coins/1" for 127.0.0.1 at 2022-07-11 00:33:43 -0300
+Processing by CoinsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coin"=>{"description"=>"BITCOIN", "acronym"=>"", "url_image"=>""}, "commit"=>"Update Coin", "id"=>"1"}
+  [1m[36mCoin Load (1.3ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+Redirected to http://127.0.0.1:3000/coins/1
+Completed 302 Found in 17ms (ActiveRecord: 1.3ms | Allocations: 1911)
+
+
+Started GET "/coins/1" for 127.0.0.1 at 2022-07-11 00:33:43 -0300
+Processing by CoinsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 31)
+  Rendered coins/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 722)
+  Rendered layout layouts/application.html.erb (Duration: 11.5ms | Allocations: 3028)
+Completed 200 OK in 18ms (Views: 12.9ms | ActiveRecord: 0.6ms | Allocations: 3902)
+
+
+Started DELETE "/coins/1" for 127.0.0.1 at 2022-07-11 00:33:45 -0300
+Processing by CoinsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mCoin Load (1.1ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  [1m[36mTRANSACTION (43.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coins_controller.rb:52:in `destroy'
+  [1m[36mCoin Destroy (109.7ms)[0m  [1m[31mDELETE FROM `coins` WHERE `coins`.`id` = 1[0m
+  ↳ app/controllers/coins_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (956.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/coins_controller.rb:52:in `destroy'
+Redirected to http://127.0.0.1:3000/coins
+Completed 302 Found in 1145ms (ActiveRecord: 1111.2ms | Allocations: 2691)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:33:47 -0300
+Processing by CoinsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 868)
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 3083)
+Completed 200 OK in 25ms (Views: 23.3ms | ActiveRecord: 0.4ms | Allocations: 3369)
+
+
+Started GET "/coins/1/edit" for 127.0.0.1 at 2022-07-11 00:33:52 -0300
+Processing by CoinsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (15.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+Completed 404 Not Found in 22ms (ActiveRecord: 15.6ms | Allocations: 979)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Coin with 'id'=1):
+  
+app/controllers/coins_controller.rb:63:in `set_coin'
+Started GET "/coins/1" for 127.0.0.1 at 2022-07-11 00:33:57 -0300
+Processing by CoinsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms | Allocations: 946)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Coin with 'id'=1):
+  
+app/controllers/coins_controller.rb:63:in `set_coin'
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 00:34:08 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.9ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 832)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 3062)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.9ms | Allocations: 3341)
+
+
+Started GET "/coins/new" for 127.0.0.1 at 2022-07-11 00:34:10 -0300
+Processing by CoinsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/new.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 12.4ms | Allocations: 1348)
+  Rendered coins/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 1605)
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 3820)
+Completed 200 OK in 31ms (Views: 28.0ms | ActiveRecord: 0.0ms | Allocations: 4189)
+
+
+Started POST "/coins" for 127.0.0.1 at 2022-07-11 00:34:30 -0300
+Processing by CoinsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coin"=>{"description"=>"eterium", "acronym"=>"et", "url_image"=>"https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.xxl.thumbs.canstockphoto.com.br%2F3d-ilustra%25C3%25A7%25C3%25A3o-s%25C3%25ADmbolo-isolado-ethereum-branca-%25C3%25ADcone-banco-de-ilustra%25C3%25A7%25C3%25A3o_csp55701585.jpg&imgrefurl=https%3A%2F%2Fwww.canstockphoto.com.br%2Fhud-s%25C3%25ADmbolo-ethereum-futurista-53252515.html&tbnid=o37f2UiEH6sqiM&vet=12ahUKEwjo5NGt8-_4AhUXrZUCHYdoAbwQMygBegQIARBI..i&docid=MfiVc6Fhv-S7DM&w=276&h=254&itg=1&q=eterium%20png%2040x40&client=ubuntu&ved=2ahUKEwjo5NGt8-_4AhUXrZUCHYdoAbwQMygBegQIARBI"}, "commit"=>"Create Coin"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mCoin Create (40.1ms)[0m  [1m[32mINSERT INTO `coins` (`description`, `acronym`, `url_image`, `created_at`, `updated_at`) VALUES ('eterium', 'et', 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.xxl.thumbs.canstockphoto.com.br%2F3d-ilustra%25C3%25A7%25C3%25A3o-s%25C3%25ADmbolo-isolado-ethereum-branca-%25C3%25ADcone-banco-de-ilustra%25C3%25A7%25C3%25A3o_csp55701585.jpg&imgrefurl=https%3A%2F%2Fwww.canstockphoto.com.br%2Fhud-s%25C3%25ADmbolo-ethereum-futurista-53252515.html&tbnid=o37f2UiEH6sqiM&vet=12ahUKEwjo5NGt8-_4AhUXrZUCHYdoAbwQMygBegQIARBI..i&docid=MfiVc6Fhv-S7DM&w=276&h=254&itg=1&q=eterium%20png%2040x40&client=ubuntu&ved=2ahUKEwjo5NGt8-_4AhUXrZUCHYdoAbwQMygBegQIARBI', '2022-07-11 03:34:30.797375', '2022-07-11 03:34:30.797375')[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (86.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+Completed 500 Internal Server Error in 145ms (ActiveRecord: 126.6ms | Allocations: 3967)
+
+
+  
+ActiveRecord::ValueTooLong (Mysql2::Error: Data too long for column 'url_image' at row 1):
+  
+app/controllers/coins_controller.rb:27:in `block in create'
+app/controllers/coins_controller.rb:26:in `create'
+Started GET "/coins/new" for 127.0.0.1 at 2022-07-11 20:17:30 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (39.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by CoinsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/new.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 100.0ms | Allocations: 3675)
+  Rendered coins/new.html.erb within layouts/application (Duration: 132.7ms | Allocations: 4307)
+  Rendered layout layouts/application.html.erb (Duration: 666.0ms | Allocations: 38700)
+Completed 200 OK in 729ms (Views: 675.2ms | ActiveRecord: 10.6ms | Allocations: 46752)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:17:34 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (16.3ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/index.html.erb within layouts/application (Duration: 30.1ms | Allocations: 1299)
+  Rendered layout layouts/application.html.erb (Duration: 41.4ms | Allocations: 3626)
+Completed 200 OK in 48ms (Views: 27.8ms | ActiveRecord: 16.3ms | Allocations: 4140)
+
+
+Started GET "/coins/new" for 127.0.0.1 at 2022-07-11 20:17:37 -0300
+Processing by CoinsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/new.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 5.5ms | Allocations: 1334)
+  Rendered coins/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1446)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 3662)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms | Allocations: 3960)
+
+
+Started POST "/coins" for 127.0.0.1 at 2022-07-11 20:18:42 -0300
+Processing by CoinsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coin"=>{"description"=>"eterium", "acronym"=>"et", "url_image"=>"https://www.pngwing.com/en/search?q=ethereum"}, "commit"=>"Create Coin"}
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mCoin Create (1.5ms)[0m  [1m[32mINSERT INTO `coins` (`description`, `acronym`, `url_image`, `created_at`, `updated_at`) VALUES ('eterium', 'et', 'https://www.pngwing.com/en/search?q=ethereum', '2022-07-11 23:18:42.198909', '2022-07-11 23:18:42.198909')[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (108.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/coins/2
+Completed 302 Found in 137ms (ActiveRecord: 110.1ms | Allocations: 3871)
+
+
+Started GET "/coins/2" for 127.0.0.1 at 2022-07-11 20:18:42 -0300
+Processing by CoinsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 1.6ms | Allocations: 263)
+  Rendered coins/show.html.erb within layouts/application (Duration: 45.9ms | Allocations: 1603)
+  Rendered layout layouts/application.html.erb (Duration: 51.5ms | Allocations: 3917)
+Completed 200 OK in 84ms (Views: 52.8ms | ActiveRecord: 0.7ms | Allocations: 6735)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:18:50 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (5.7ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 29)
+  Rendered coins/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1098)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 3316)
+Completed 200 OK in 31ms (Views: 23.2ms | ActiveRecord: 5.7ms | Allocations: 3642)
+
+
+Started GET "/coins/new" for 127.0.0.1 at 2022-07-11 20:18:51 -0300
+Processing by CoinsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/new.html.erb within layouts/application
+  Rendered coins/_form.html.erb (Duration: 8.7ms | Allocations: 1306)
+  Rendered coins/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1415)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 3630)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms | Allocations: 3920)
+
+
+Started POST "/coins" for 127.0.0.1 at 2022-07-11 20:19:16 -0300
+Processing by CoinsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coin"=>{"description"=>"bitcoin", "acronym"=>"bt", "url_image"=>"https://www.gratispng.com/png-0kgn50/download.html"}, "commit"=>"Create Coin"}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mCoin Create (0.7ms)[0m  [1m[32mINSERT INTO `coins` (`description`, `acronym`, `url_image`, `created_at`, `updated_at`) VALUES ('bitcoin', 'bt', 'https://www.gratispng.com/png-0kgn50/download.html', '2022-07-11 23:19:16.960988', '2022-07-11 23:19:16.960988')[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (185.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/coins_controller.rb:27:in `block in create'
+Redirected to http://127.0.0.1:3000/coins/3
+Completed 302 Found in 236ms (ActiveRecord: 186.4ms | Allocations: 2471)
+
+
+Started GET "/coins/3" for 127.0.0.1 at 2022-07-11 20:19:17 -0300
+Processing by CoinsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins` WHERE `coins`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/coins_controller.rb:63:in `set_coin'
+  Rendering layout layouts/application.html.erb
+  Rendering coins/show.html.erb within layouts/application
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 29)
+  Rendered coins/show.html.erb within layouts/application (Duration: 3.0ms | Allocations: 645)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 2868)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 0.6ms | Allocations: 3673)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:19:21 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (1.3ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 29)
+  Rendered coins/_coin.html.erb (Duration: 0.3ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 1166)
+  Rendered layout layouts/application.html.erb (Duration: 26.0ms | Allocations: 3381)
+Completed 200 OK in 30ms (Views: 26.8ms | ActiveRecord: 1.3ms | Allocations: 3662)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:22:45 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (1.0ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 1.3ms | Allocations: 213)
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 4492)
+Completed 200 OK in 28ms (Views: 25.1ms | ActiveRecord: 1.0ms | Allocations: 5348)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:23:12 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 1.4ms | Allocations: 212)
+  Rendered coins/_coin.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 13.4ms | Allocations: 1901)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 4506)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.6ms | Allocations: 5386)
+
+
+Started GET "/coins" for 127.0.0.1 at 2022-07-11 20:25:36 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 1.5ms | Allocations: 213)
+  Rendered coins/_coin.html.erb (Duration: 0.5ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 1863)
+  Rendered layout layouts/application.html.erb (Duration: 28.7ms | Allocations: 4475)
+Completed 200 OK in 35ms (Views: 31.5ms | ActiveRecord: 0.6ms | Allocations: 5352)
+
+
+Started GET "/" for ::1 at 2022-07-12 22:29:51 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (22.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/linuxanselmo/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 66.8ms | Allocations: 537)
+Completed 200 OK in 119ms (Views: 90.3ms | ActiveRecord: 0.0ms | Allocations: 3711)
+
+
+Started GET "/welcome/index" for ::1 at 2022-07-12 22:30:11 -0300
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 16.2ms | Allocations: 373)
+  Rendered layout layouts/application.html.erb (Duration: 339.8ms | Allocations: 35114)
+Completed 200 OK in 349ms (Views: 346.0ms | ActiveRecord: 0.0ms | Allocations: 36165)
+
+
+Started GET "/coins" for ::1 at 2022-07-12 22:30:15 -0300
+Processing by CoinsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coins/index.html.erb within layouts/application
+  [1m[36mCoin Load (30.3ms)[0m  [1m[34mSELECT `coins`.* FROM `coins`[0m
+  ↳ app/views/coins/index.html.erb:6
+  Rendered coins/_coin.html.erb (Duration: 2.0ms | Allocations: 281)
+  Rendered coins/_coin.html.erb (Duration: 0.4ms | Allocations: 28)
+  Rendered coins/index.html.erb within layouts/application (Duration: 489.8ms | Allocations: 6300)
+  Rendered layout layouts/application.html.erb (Duration: 503.9ms | Allocations: 8730)
+Completed 200 OK in 538ms (Views: 467.5ms | ActiveRecord: 39.6ms | Allocations: 10308)
+
+
